@@ -1,120 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auni's Space | Home</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #D7CCC8, #FAF9F6);
-      color: #4E342E;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      margin: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Aunee's Space</title>
 
-    /* Header layer with medium light brown border */
-    header {
-      padding: 3rem 2rem;
-      border: 6px solid #BCAAA4; /* Medium light brown */
-      border-radius: 20px;       /* Rounded edges for layer effect */
-      margin: 2rem auto;
-      max-width: 90%;
-      background-color: #FAF9F6; /* Slight contrast for the layer */
-      box-shadow: 0 8px 15px rgba(78, 52, 46, 0.2);
-    }
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header h1 {
-      font-size: 2.6rem;
-      color: #4E342E;
-      letter-spacing: 1px;
-      margin: 0;
-    }
+        body {
+            font-family: Arial, sans-serif;
 
-    nav.nav-box {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding: 1rem;
-    }
+            /* BACKGROUND IMAGE */
+            background-image: url('header.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll; /* default mobile friendly */
 
-    nav.nav-box a {
-      text-decoration: none;
-      color: #4E342E;
-      background-color: #EDE0D4;
-      border: 2px solid #BCAAA4;
-      padding: 1rem 2rem;
-      border-radius: 15px;
-      font-weight: 600;
-      box-shadow: 0 5px 7px rgba(78, 52, 46, 0.15);
-      transition: all 0.3s ease;
-    }
+            /* fallback color */
+            background-color: #f4e3c1;
+        }
 
-    nav.nav-box a:hover {
-      background-color: #8D6E63;
-      color: #FAF9F6;
-      transform: translateY(-4px);
-      box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
-    }
+        /* Special rule to enable fixed background on devices that support it */
+        @media (min-width: 768px) {
+            body {
+                background-attachment: fixed;
+            }
+        }
 
-    nav.nav-box a.active {
-      background-color: #4E342E;
-      color: #FAF9F6;
-      border-color: #3E2723;
-    }
+        /* OVERLAY */
+        .overlay {
+            background-color: rgba(244, 227, 193, 0);
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
 
-    main {
-      flex: 1; /* Ensures footer stays at bottom */
-      padding: 1rem;
-    }
+        /* SIDEBAR */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 3;
+            top: 0;
+            left: 0;
+            background-color: #5a3e2b;
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+        }
+		
+        .sidebar a {
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+        }
 
-    footer {
-      background: #4E342E;
-      color: #FAF9F6;
-      padding: 1.5rem;
-      font-size: 1rem;
-      margin-top: auto;
-    }
+        .sidebar a:hover {
+            background-color: #7b543c;
+        }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      nav.nav-box {
-        flex-direction: column;
-        align-items: center;
-      }
-      nav.nav-box a {
-        width: 80%;
-        text-align: center;
-      }
-    }
-  </style>
+        .openbtn {
+            font-size: 22px;
+            cursor: pointer;
+            background-color: #5a3e2b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            border-radius: 8px;
+            z-index: 4;
+        }
+
+        /* MAIN */
+        .main {
+            text-align: center;
+            padding: 30px;
+			margin-top: 150px;
+        }
+		
+        /* TEXT BOX */
+        .text-box {
+            background-color: rgba(139, 95, 60, 0.25);
+            padding: 25px;
+            width: 80%;
+            max-width: 650px;
+            margin: 20px auto;
+            border-radius: 15px;
+            border: 1px solid #b8926a;
+            backdrop-filter: blur(3px);
+            font-size: 20px;
+            color: #5a3e2b;
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.25);
+		
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #5a3e2b;
+            color: white;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            z-index: 5;
+        }
+    </style>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
 </head>
+
 <body>
-  <header>
-    <h1>Welcome to Auni's Personal Space ☕</h1>
-  </header>
 
-  <nav class="nav-box">
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About</a>
-    <a href="hobbies.html">Hobbies</a>
-    <a href="goals.html">Goals</a>
-  </nav>
+<div class="overlay">
 
-  <main>
-    <p>Explore my personal space! Click on the navigation above to learn more about me, my hobbies, and my goals.</p>
-  </main>
+    <!-- SIDEBAR -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" onclick="closeNav()">✖ Close</a>
+        <a href="index.html">Home</a>
+        <a href="aboutme.html">About Me</a>
+        <a href="favourite.html">Favourite</a>
+        <a href="experience.html">Experience</a>
+        <a href="contact.html">Contact</a>
+    </div>
 
-  <footer>
-    © <script>document.write(new Date().getFullYear())</script> Auni's Space. All rights reserved.
-  </footer>
+    <!-- MENU BUTTON -->
+    <button class="openbtn" onclick="openNav()">☰ Menu</button>
+
+    <!-- MAIN -->
+    <div class="main">
+        <h1 style="color:white; background:#5a3e2b; padding:12px; border-radius:5px; display:inline-block;">
+				Welcome to Aunee's Space
+        </h1>
+
+        <div  class="text-box"> 
+		<br>
+            <p>
+                Hi peeps! This is my comfort space.   
+                <p>Feel free to explore my website and learn more about my journey ♡</p>
+            </p>
+		</br>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2025 Aunee — All Rights Reserved
+</div>
+
 </body>
 </html>
+
+
 
